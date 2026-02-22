@@ -149,6 +149,16 @@
             document.getElementById('rejected-count-display').innerText = rejected;
         }
 
+        function updateStatus(id, newStatus) {
+            allJobs.forEach(job => {
+                if(job.id === id) {
+                    job.status = newStatus;
+                }
+            });
+            updateCounters();
+            showJobs();
+        }
+
         
     </script>
 </body>
