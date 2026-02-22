@@ -50,6 +50,16 @@
             <h2 class="text-xl font-bold text-[#002b5b]">Available Jobs</h2>
             <p class="text-pure-black font-semibold text-sm opacity-60"><span id="tab-job-count">8</span> jobs</p>
         </div>
+        <!-- Filter Tabs -->
+        <div class="flex gap-2 mb-8 bg-gray-100 p-1.5 rounded-lg w-fit">
+            <button onclick="filterTab('all')" id="btn-all" class="btn btn-sm bg-[#3b82f6] text-white border-none px-6">All</button>
+            <button onclick="filterTab('interview')" id="btn-interview" class="btn btn-sm bg-transparent text-pure-black border-none px-6 opacity-60">Interview</button>
+            <button onclick="filterTab('rejected')" id="btn-rejected" class="btn btn-sm bg-transparent text-pure-black border-none px-6 opacity-60">Rejected</button>
+        </div>
+
+        <!-- List of Job Cards -->
+        <div id="job-list" class="space-y-6">
+        </div>
     </div>
 </body>
 </html>
