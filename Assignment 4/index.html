@@ -72,6 +72,73 @@
             { id: 7, company: "StartupXYZ", role: "Full Stack Engineer", info: "Remote • Full-time • $120,000 - $160,000", desc: "Join our fast-growing startup and work on our core platform. Experience with Node.js and React required.", status: "NOT APPLIED" },
             { id: 8, company: "TechCorp Industries", role: "Senior Frontend Developer", info: "San Francisco, CA • Full-time • $130,000 - $175,000", desc: "We are looking for an experienced Frontend Developer to build scalable web applications using React.", status: "NOT APPLIED" }
         ];
+        let activeTab = "all";
+
+        function showJobs() {
+            const listContainer = document.getElementById('job-list');
+            listContainer.innerHTML = ""; 
+
+            let displayedJobs = [];
+            if(activeTab === "all") {
+                displayedJobs = allJobs;
+            } else if(activeTab === "interview") {
+                displayedJobs = allJobs.filter(j => j.status === "INTERVIEW");
+            } else if(activeTab === "rejected") {
+                displayedJobs = allJobs.filter(j => j.status === "REJECTED");
+            }
+
+            document.getElementById('tab-job-count').innerText = displayedJobs.length;
+
+            if(displayedJobs.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="bg-white empty-state-border rounded-3xl p-16 flex flex-col items-center justify-center text-center">
+                        <img src="/B13-A4-PH-Job-Tracker-main/jobs.png" class="w-24 mb-6 opacity-30" alt="no jobs">
+                        <h3 class="text-2xl font-bold text-[#002b5b]">No jobs available</h3>
+                        <p class="text-slate-400 mt-2">Check back soon for new job opportunities</p>
+                    </div>
+                `;
+                return;
+            }
+
+            displayedJobs.forEach(job => {
+                const cardHTML = `
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative">
+                        <button onclick="removeCard(${job.id})" class="absolute top-8 right-8 text-gray-300 hover:text-red-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                        <h3 class="text-xl font-bold text-[#002b5b] mb-1">${job.company}</h3>
+                        
+                        <!-- Position title color now matches the line below it -->
+                        <p class="text-pure-black opacity-60 font-semibold mb-2">${job.role}</p>
+                        
+                        <p class="text-pure-black text-sm mb-4 font-medium opacity-60">${job.info}</p>
+                        
+                        <div class="mb-4">
+                            <span class="px-3 py-1 rounded text-[11px] font-bold text-pure-black bg-blue-50 uppercase tracking-wide">
+                                ${job.status}
+                            </span>
+                        </div>
+                        
+                        <p class="text-pure-black text-sm mt-5 leading-relaxed font-medium opacity-80">${job.desc}</p>
+
+                        <div class="flex gap-4 mt-8">
+                            <button onclick="updateStatus(${job.id}, 'INTERVIEW')" 
+                                class="btn btn-sm btn-outline border-[#10b981] text-[#10b981] hover:bg-[#10b981] hover:border-none px-6 font-bold uppercase">
+                                INTERVIEW
+                            </button>
+                            <button onclick="updateStatus(${job.id}, 'REJECTED')" 
+                                class="btn btn-sm btn-outline border-[#f43f5e] text-[#f43f5e] hover:bg-[#f43f5e] hover:border-none px-6 font-bold uppercase">
+                                REJECTED
+                            </button>
+                        </div>
+                    </div>
+                `;
+                listContainer.innerHTML += cardHTML;
+            });
+        }
+
     </script>
 </body>
 </html>
