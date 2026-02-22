@@ -138,7 +138,18 @@
                 listContainer.innerHTML += cardHTML;
             });
         }
+        
+        function updateCounters() {
+            const total = allJobs.length;
+            const interview = allJobs.filter(j => j.status === "INTERVIEW").length;
+            const rejected = allJobs.filter(j => j.status === "REJECTED").length;
 
+            document.getElementById('total-count-display').innerText = total;
+            document.getElementById('interview-count-display').innerText = interview;
+            document.getElementById('rejected-count-display').innerText = rejected;
+        }
+
+        
     </script>
 </body>
 </html>
