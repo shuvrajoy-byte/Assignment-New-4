@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+    
+    <!-- CDN links for Tailwind and DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body { 
+            background-color: #f3f7fa; 
+        }
+        .text-pure-black {
+            color: #000000 !important;
+        }
+        .empty-state-border {
+            border: 2px dashed #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="max-w-5xl mx-auto p-6 md:p-12">
+        
+        <!-- Main Header -->
+        <h1 class="text-3xl font-bold text-[#002b5b] mb-10">Job Application Tracker</h1>
+
+        <!-- Dashboard Stats Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <p class="text-pure-black font-semibold text-xs mb-2">Total</p>
+                <p id="total-count-display" class="text-4xl font-bold text-pure-black">8</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <p class="text-pure-black font-semibold text-xs mb-2">Interview</p>
+                <p id="interview-count-display" class="text-4xl font-bold text-[#10b981]">0</p>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+                <p class="text-pure-black font-semibold text-xs mb-2">Rejected</p>
+                <p id="rejected-count-display" class="text-4xl font-bold text-[#f43f5e]">0</p>
+            </div>
+        </div>
+
+        <hr class="border-gray-200 mb-10">
+    </div>
+</body>
+</html>
