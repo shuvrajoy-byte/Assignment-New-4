@@ -159,6 +159,12 @@
             showJobs();
         }
 
+        function removeCard(id) {
+            allJobs = allJobs.filter(job => job.id !== id);
+            updateCounters();
+            showJobs();
+        }
+
         
     </script>
 </body>
